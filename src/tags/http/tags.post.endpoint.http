@@ -1,0 +1,9 @@
+POST http://localhost:3300/tags
+Content-Type: application/json
+{
+    "name": "Sci-fi",
+    "description":"post about adventure",
+    "featuredImageUrl": "http://localhost.com/img.jpg",
+    "slug": "my-ulr5",
+    "schema": "{\r\n \"@context\": \"https:\/\/schema.org\", \r\n \"@type\": \"Person\"\r\n }"
+}

@@ -18,7 +18,7 @@ export class AuthService{
         //login
         //return a token
 
-        const user = this.userService.findOneById("1234");
+        const user = this.userService.findOneById(3);
         return "SAMPLE_TOKEN";
     }
 

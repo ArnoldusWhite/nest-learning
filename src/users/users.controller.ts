@@ -22,10 +22,12 @@ import { PatchUserDto } from "./dtos/patch-user.dto";
 import { UsersService } from "./providers/users.service";
 import { AuthService } from "src/auth/providers/auth.service";
 import { GetPostsParamDto } from "src/posts/dtos/get-post-param.dto";
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 //http://localhost:3300/users
 
 @Controller('users')
+@ApiTags('Users')
 export class UsersController {
     constructor(
         //Injecting Users Service
@@ -38,6 +40,27 @@ export class UsersController {
      * The endpoint should also accept limit and offset as query param
     */
     @Get('{/:id}')
+    @ApiOperation({
+        summary:'Fetches a list of registered users on the application'
+    })
+    @ApiResponse({
+        status:200,
+        description:'Users fetched successfully'
+    })
+    @ApiQuery({
+        name: 'limit',
+        type: 'number',
+        required: false,
+        description: 'The number of entries returned by query',
+        example:10
+    })
+     @ApiQuery({
+        name: 'offset',
+        type: 'number',
+        required: false,
+        description: 'The page number to display',
+        example:2
+    })
     public getUsers(
         @Param() GetUserParamDto: GetUsersParamDto, 
         @Query('limit',new DefaultValuePipe(10), ParseIntPipe) limit: number,
@@ -56,7 +79,7 @@ export class UsersController {
     ){
         console.log(createUserDto);
         console.log( createUserDto instanceof CreateUserDto );
-        return "You send a post request to create a user";
+        return this.usersService.createUser(createUserDto);
     }
 
     //using express JS

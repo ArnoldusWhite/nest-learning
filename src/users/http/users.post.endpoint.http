@@ -1,11 +1,10 @@
 POST http://localhost:3300/users/
 Content-Type: application/json
 {
-    "firstName": "Arnold",
-    "lastName": "Bayema",
-    "email": "abayema123@gmail.com",
-    "password": "password@1234",
-    "isTrue": true // will be ignore due to the whitelist in the main.TS
+    "firstName": "John",
+    "lastName": "BaDoeyema",
+    "email": "abayema@gmail.com",
+    "password": "password@1234"
 }
 
 POST http://localhost:3300/users/createExpress
