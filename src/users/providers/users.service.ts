@@ -5,6 +5,8 @@ import { Repository } from "typeorm";
 import { User } from "../user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "../dtos/create-dto";
+import { ConfigService, ConfigType } from "@nestjs/config";
+import profileConfig from "../config/profile.config";
 
 
 @Injectable()
@@ -17,18 +19,30 @@ export class UsersService{
             * Injecting userRepository
             */
            @InjectRepository(User)
-           private usersRepository: Repository<User>
+           private usersRepository: Repository<User>,
+           /**
+            * Injecting configService
+            */
+           private readonly configService: ConfigService,
+           /**
+            * Inject the apiKeyConfig
+            */
+           @Inject(profileConfig.KEY)
+           private readonly apiKeyConfig: ConfigType<typeof profileConfig>
         ){}
 
     public findAll(
         GetUserParamDto: GetUsersParamDto,
         limit: number,
         offset:number){
-        
-        const isAuth = this.authService.isAuth();
-        console.log(isAuth
 
-        )
+        
+        const environment = this.configService.get<string>('S3_BUCKET');
+        console.log(`The environment is ${environment}`);
+        console.log(`The api key is ${this.apiKeyConfig}`);
+        console.log(this.apiKeyConfig.apikey);
+        const isAuth = this.authService.isAuth();
+        console.log(isAuth)
         return [
             {
                 firstName:'John',
