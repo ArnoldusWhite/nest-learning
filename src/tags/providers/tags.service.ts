@@ -25,11 +25,15 @@ export class TagsService {
     }
 
     public async findMultiple(tagsId: number[]){
-        return await this.tagsRepository.find({
+        
+
+        let result = await this.tagsRepository.find({
             where: {
                 id: In(tagsId)
              }
-        })
+        });
+        
+        return result;
     }
 
     public async deleteTag(id: number){

@@ -1,9 +1,15 @@
 POST http://localhost:3300/tags
 Content-Type: application/json
 {
-    "name": "Sci-fi",
-    "description":"post about adventure",
+    "name": "Horror",
+    "description":"post about horror",
     "featuredImageUrl": "http://localhost.com/img.jpg",
-    "slug": "my-ulr5",
+    "slug": "my-ulr6",
     "schema": "{\r\n \"@context\": \"https:\/\/schema.org\", \r\n \"@type\": \"Person\"\r\n }"
+}
+
+POST http://localhost:3300/tags/multiple/
+Content-Type: application/json
+{
+    "tagsArray":[8,7]
 }

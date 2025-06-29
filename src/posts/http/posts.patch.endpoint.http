@@ -1,7 +1,7 @@
 PATCH http://localhost:3300/posts/
 Content-Type: application/json
 {
-    "id": 17,
+    "id": 29,
     "title": "Arnold",
     "postType": "page",
     "slug": "/postX",
@@ -9,6 +9,6 @@ Content-Type: application/json
     "publishOn": "2022-09-27T18:00:00",
     "slug": "my-url",
     "schema": "{\r\n \"@context\": \"https:\/\/schema.org\", \r\n \"@type\": \"Person\"\r\n }",
-    "tags":[3,1],
+    "tags":[3,9],
     "featureImageUrl": "http://locahlhost.com/image.img"
 }

@@ -2,6 +2,11 @@ GET http://localhost:3300/users
 ?limit=10
 &offset=20
 
-GET http://localhost:3300/users/45
-?limit=10
+GET http://localhost:3300/users/5
+?limit=1
 &offset=20
+
+
+GET http://localhost:3300/users/byId/3
+
+GET http://localhost:3300/users/customException

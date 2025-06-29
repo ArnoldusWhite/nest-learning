@@ -35,6 +35,11 @@ export class UsersController {
         private readonly authService: AuthService
     ){}
 
+     @Get('/customException')
+    public getUsers2(){
+        return this.usersService.findAllUsers();
+    }
+
     /*
      * The ID is optional in this request. 
      * The endpoint should also accept limit and offset as query param
@@ -71,6 +76,15 @@ export class UsersController {
         //console.log(GetUserParamDto);
         console.log(this.authService.isConnected("23"))
         return this.usersService.findAll(GetUserParamDto,limit,offset);
+    }
+
+   
+
+    @Get('byId/:id')
+    public async getUserById(
+        @Param('id', ParseIntPipe) id: number
+    ){
+        return this.usersService.findOneById(id);
     }
 
     @Post()

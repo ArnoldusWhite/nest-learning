@@ -10,13 +10,13 @@ Content-Type: application/json
     "slug": "/postX",
     "status":"draft",
     "publishOn": "2022-09-27T18:00:00",
-    "slug": "my-ur25",
+    "slug": "my-ur27",
     "schema": "{\r\n \"@context\": \"https:\/\/schema.org\", \r\n \"@type\": \"Person\"\r\n }",
     "featureImageUrl": "http://locahlhost.com/image.img",
     "metaOptions":{
             "metaValue":"{\"sidebarEnabled\":true, \"footerActive\":true }"
         },
     "authorId": 1,
-    "tags": [7,8]
+    "tags": [1,2]
    
 }
