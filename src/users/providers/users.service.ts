@@ -1,7 +1,7 @@
 import { Injectable, Inject, forwardRef, RequestTimeoutException, BadRequestException, HttpException, HttpStatus } from "@nestjs/common";
 import { GetUsersParamDto } from "../dtos/get-users-param.dto";
 import { AuthService } from "src/auth/providers/auth.service";
-import { Repository } from "typeorm";
+import { DataSource, Repository } from "typeorm";
 import { User } from "../user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "../dtos/create-dto";
@@ -9,6 +9,8 @@ import { ConfigService, ConfigType } from "@nestjs/config";
 import profileConfig from "../config/profile.config";
 import { get } from "http";
 import { error } from "console";
+import { UsersCreateManyService } from "./users-create=many.service";
+import { UsersCreateManyDto } from "../dtos/create-multiple-users.dto";
 
 
 @Injectable()
@@ -30,7 +32,15 @@ export class UsersService{
             * Inject the apiKeyConfig
             */
            @Inject(profileConfig.KEY)
-           private readonly apiKeyConfig: ConfigType<typeof profileConfig>
+           private readonly apiKeyConfig: ConfigType<typeof profileConfig>,
+           /**
+            * Inject DataSource
+            */
+           private readonly dataSource: DataSource,
+           /**
+            * Inject CreateManyUsersService 
+            */
+           private readonly usersCreateManyService: UsersCreateManyService,
         ){}
 
     public async findAll(
@@ -185,6 +195,10 @@ export class UsersService{
         
         return newUser;
         
+    }
+
+    public async createMultipleUsers(users: UsersCreateManyDto){
+        return await this.usersCreateManyService.createMultipleUsers(users);
     }
 
 }

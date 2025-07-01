@@ -15,3 +15,23 @@ Content-Type: application/json
     "email": "abayema123@gmail.com",
     "password": "1234"
 }
+
+POST http://localhost:3300/users/createMultiple
+Content-Type: application/json
+{
+   "usersList": [
+        {
+            "firstName": "John",
+            "lastName": "BaDoeyema",
+            "email": "bayema32@gmail.com",
+            "password": "password@1234"
+        },
+         {
+            "firstName": "John",
+            "lastName": "BaDoeyema",
+            "email": "bayema321@gmail.com",
+            "password": "password@1234"
+        }
+        
+    ]
+}

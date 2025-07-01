@@ -23,6 +23,7 @@ import { UsersService } from "./providers/users.service";
 import { AuthService } from "src/auth/providers/auth.service";
 import { GetPostsParamDto } from "src/posts/dtos/get-post-param.dto";
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { UsersCreateManyDto } from "./dtos/create-multiple-users.dto";
 
 //http://localhost:3300/users
 
@@ -94,6 +95,14 @@ export class UsersController {
         console.log(createUserDto);
         console.log( createUserDto instanceof CreateUserDto );
         return this.usersService.createUser(createUserDto);
+    }
+
+    @Post('createMultiple')
+    public createMultipleUsers(
+        @Body() usersList: UsersCreateManyDto,
+    ){
+        return this.usersService.createMultipleUsers(usersList);
+
     }
 
     //using express JS
